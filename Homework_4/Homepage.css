@@ -1,5 +1,11 @@
-:root{
+/* Importing some fonts from googlefonts website */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Creepster&family=Righteous&display=swap');
 
+:root{
+  /* Declaring variables to use throughout CSS file */
+  --backgroundColorBLACK: black;
+  --buttonColorWHITE: #fffffe;
+  --buttonTextRED: #e53134;
 }
 
 *{
@@ -7,4 +13,91 @@
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
+}
+
+.navbar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 12dvh;
+
+  background: linear-gradient(0.25turn, #870000, black, black);
+}
+
+.nav-btn{
+  margin: 10px 50px;
+
+  color: var(--buttonColorWHITE);
+
+  font-family: "Creepster", sans-serif;
+  font-size: 2.5rem;
+  text-decoration: none;
+
+  transition: ease-in-out .2s;
+}
+
+.nav-btn:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.nav-btn:active{
+  opacity: .8;
+}
+
+.home-page-content-container{
+  display: flex;
+
+  min-height: 88dvh;
+
+  background: linear-gradient(0.25turn, #870000, black, black);
+}
+
+.take-quiz-btn-container{
+  width: 50%;
+}
+
+.take-quiz-btn-container h1{
+  padding: 70px 90px 90px 90px;
+
+  font-family: "Cinzel", sans-serif;
+  font-size: 2rem;
+  color: var(--buttonColorWHITE);
+}
+
+.take-quiz-btn-container p{
+  padding: 0px 90px 90px 90px;
+  
+  font-family: "Cinzel", sans-serif;
+  font-size: 1.7rem;
+  color: var(--buttonColorWHITE);
+}
+
+.take-quiz-btn{
+  height: 90px;
+  width: 300px;
+  
+  border: none;
+  border-radius: 150px;
+  margin: 0px 175px 20px 175px;
+
+  font-size: 3.5rem;
+
+  background-color: var(--buttonTextRED);
+  color: var(--buttonColorWHITE);
+  text-shadow: 3px 3px var(--backgroundColorBLACK);
+}
+
+.vampire-quiz-gif-container{
+  width: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vampire-quiz-gif-container img{
+  height: 600px;
+  padding-bottom: 50px;
 }
