@@ -52,25 +52,25 @@
 .about-page-body-container{
   display: flex;
   flex-direction: column;
-  min-height: 88dvh;
+  min-height: 95dvh;
 
   background: linear-gradient(0.25turn, #870000, black, black);
 }
 
 .about-page-body-container h2{
-    font-size: 2.4rem;
+    font-size: 1.5rem;
     color: var(--buttonColorWHITE);
     font-family: var(--bodyTextFONT), sans-serif;
     
-    padding: 75px 150px 10px 150px;
+    padding: 75px 125px 10px 125px;
 }
 
 .about-page-body-container p{
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: var(--buttonColorWHITE);
     font-family: var(--bodyTextFONT), sans-serif;
     
-    padding: 0px 150px 5px 150px;
+    padding: 0px 125px 5px 125px;
 }
 
 /*Media Quieries for mobile devices*/
@@ -113,13 +113,14 @@
     .about-page-body-container{
         justify-content: center;
         align-items: center;
+        margin-top: -50px;
     }
 
     .about-page-body-container h2{
-        font-size: 3.5rem;
+        font-size: 3rem;
     }
 
     .about-page-body-container p{
-        font-size: 1.8rem;
+        font-size: 1.5rem;
     }
 }
