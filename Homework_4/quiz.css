@@ -1,0 +1,72 @@
+/* Importing some fonts from googlefonts website */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Creepster&family=Righteous&display=swap');
+
+:root{
+  /* Declaring variables to use throughout CSS file */
+  --backgroundColorBLACK: black;
+  --buttonColorWHITE: #fffffe;
+  --buttonTextRED: #e53134;
+  --buttonTextFONT: "Creepster";
+  --bodyTextFONT: "Cinzel";
+  --navbarHeight: 12dvh;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.navbar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: var(--navbarHeight);
+
+  background: linear-gradient(0.25turn, #870000, black, black);
+}
+
+.nav-btn{
+  margin: 10px 50px;
+
+  color: var(--buttonColorWHITE);
+
+  font-family: var(--buttonTextFONT), sans-serif;
+  font-size: 2.5rem;
+  text-decoration: none;
+
+  transition: ease-in-out .2s;
+}
+
+.nav-btn:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.nav-btn:active{
+  opacity: .8;
+}
+
+.quiz-page-content-container{
+  display: flex;
+  color: white;
+  font: var(--bodyTextFONT);
+  min-height: 88dvh;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(0.25turn, #870000, black, black);
+}
+
+.quiz-page-form{
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.table{
+  font: var(--bodyTextFONT);
+  color: black;
+}
+

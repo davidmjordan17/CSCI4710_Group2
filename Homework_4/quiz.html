@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vampire App</title>
+  <link rel="stylesheet" href="quiz.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!--load data-->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['table']});
+    google.charts.setOnLoadCallback(drawTable);
+
+    var classmate_data = [
+      {
+        'name'      : 'John',
+        'shadow'    : 'no',
+        'garlic'     : 'no',
+        'complexion': 'pale'
+      },
+      {
+        'name'      : 'Lee',
+        'shadow'    : 'yes',
+        'garlic'     : 'no',
+        'complexion': 'pale'
+      },
+      {
+        'name'      : 'Emma',
+        'shadow'    : 'no',
+        'garlic'     : 'yes',
+        'complexion': 'brown'
+      },
+      {
+        'name'      : 'Ava',
+        'shadow'    : 'yes',
+        'garlic'     : 'yes',
+        'complexion': 'olive '
+      },
+      {
+        'name'      : 'Alex',
+        'shadow'    : 'no',
+        'garlic'     : 'no',
+        'complexion': 'brown'
+      },
+    ];
+    var data;
+    var table;
+
+    function drawTable() {
+      data = new google.visualization.DataTable(allowHtml=true);
+      data.addColumn('string', 'Name');
+      data.addColumn('string', 'Eats Garlic');
+      data.addColumn('string', 'Has Shadow');
+      data.addColumn('string', 'Complexion');
+      for (i = 0; i < classmate_data.length; i++){
+        data.addRow([classmate_data[i]['name'], classmate_data[i]['garlic'], classmate_data[i]['shadow'], classmate_data[i]['complexion']]);
+      }
+
+      table = new google.visualization.Table(document.getElementById('table_div'), allowHtml=true);
+
+      table.draw(data, {showRowNumber: true, width: '100%', height: '50%'});
+    };
+
+    function addClassmate(){
+        var name = document.getElementById('first_name').value;
+        var shadow = 'no';
+        if (document.getElementById('shadow').checked){
+            var shadow = 'yes';
+        };
+        var garlic = 'no';
+        if (document.getElementById('garlic').checked){
+            var garlic = 'yes';
+        };
+        var complexion = document.getElementById('complexion').value;
+        classmate_data += {'name':name,'shadow':shadow,'garlic':garlic,'complexion':complexion};
+        data.addRow([name, garlic, shadow, complexion])
+        table.draw(data, {showRowNumber: true, width: '100%', height: '50%'});
+
+    }
+  </script>
+</head>
+<body>
+
+  
+  <!--navbar container START-->
+  <nav class="navbar">
+    <!--nav-btn-container holds the button/a elements inside of the navbar that take user to different html pages-->
+    <div class="nav-btns-container">
+      <a href="HomePage.html" class="nav-btn">Home</a>
+      <a href="#" class="nav-btn">Table</a>
+      <a href="AboutPage.html" class="nav-btn">About</a>
+    </div>
+  </nav>
+  <!--navbar container END-->
+
+  <!--quiz page container START-->
+  <main class="quiz-page-content-container">
+    <!--classmate info form START-->
+    <div class="quiz-page-form">
+    <h1>Enter new classmate:</h1>
+      <form>
+        <div class="form-row">
+          <!--first name-->
+          <div class="form-group col-md-4">
+                <label for = "first_name">First Name</label>
+                <input type="text" class="form-control" id="first_name" placeholder="First Name">
+          </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <!--garlic-->
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="garlic">Eats garlic?</label>
+                    </div>
+                    <!--shadow-->
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="shadow">Has shadow?</label>
+                    </div>
+                </div>
+            </div>
+            <!--complexion-->
+            <div class="form-group col-md-4">
+                <label for = "complexion">Complexion</label>
+                <input type="text" class="form-control" id="complexion" placeholder="complexion">
+            </div>
+            <button type="button"onclick="addClassmate()">Submit</button>
+        </div>
+        </form>
+    </div>   
+  </div>
+    <!--classmate data table-->
+    <div class = "table" id="table_div"></div>
+</main>
+</body>
+</html>
+
