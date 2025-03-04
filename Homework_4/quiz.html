@@ -12,7 +12,10 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
     google.charts.load('current', {'packages':['table']});
+    google.charts.load('current', { 'packages': ['corechart', 'pie'] });
+    //google.charts.load('current', { 'packages': ['corechart', 'pie', 'table'] });
     google.charts.setOnLoadCallback(drawTable);
+    google.charts.setOnLoadCallback(drawChart);
 
     var classmate_data = [
       {
@@ -64,6 +67,37 @@
       table.draw(data, {showRowNumber: true, width: '100%', height: '50%'});
     };
 
+    function drawChart(){
+      var numOfVampires = 0;
+      var numOfHumans = 0;
+
+      classmate_data.forEach(person =>{
+        if (person.shadow === 'no'  && person.garlic === 'no' && person.complexion === 'pale'){
+          numOfVampires++
+        }else{
+          numOfHumans++
+        }
+      });
+
+      var chartOptions = google.visualization.arrayToDataTable([
+        ['Type','Amount'],
+        ['Vampires',numOfVampires],
+        ['Humans', numOfHumans]
+      ]);
+        
+      var options = {
+      title: 'Vampire vs. Human Distribution',
+      is3D: true,
+      slices: {
+        0: { color: 'red' }, 
+        1: { color: 'white' } 
+      }
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('vampire_piechart'));
+    chart.draw(chartOptions, options);
+      }
+
     function addClassmate(){
         var name = document.getElementById('first_name').value;
         var shadow = 'no';
@@ -79,7 +113,10 @@
         data.addRow([name, garlic, shadow, complexion])
         table.draw(data, {showRowNumber: true, width: '100%', height: '50%'});
 
+        drawChart();
+
     }
+
   </script>
 </head>
 <body>
@@ -132,7 +169,11 @@
   </div>
     <!--classmate data table-->
     <div class = "table" id="table_div"></div>
+    <!--classmate pie chart-->
+    <div id="vampire_piechart" style="width: 500px; height: 350px;"></div>
 </main>
 </body>
 </html>
+
+
 
