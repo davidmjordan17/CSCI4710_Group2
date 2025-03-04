@@ -79,13 +79,17 @@
 
 .take-quiz-btn{
   height: 90px;
-  width: 300px;
+  width: 200px;
   
   border: none;
   border-radius: 150px;
   margin: 0px 175px 20px 175px;
 
-  font-size: 3.5rem;
+  padding: 20px;
+
+  font-size: 4rem;
+  font-family: var(--buttonTextFONT), sans-serif;
+  text-decoration: none;
 
   background-color: rgb(229, 49, 52, .4);
   color: var(--buttonColorWHITE);
