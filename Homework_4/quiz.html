@@ -9,11 +9,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <!--load data-->
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
-    google.charts.load('current', {'packages':['table']});
-    google.charts.load('current', { 'packages': ['corechart', 'pie'] });
-    //google.charts.load('current', { 'packages': ['corechart', 'pie', 'table'] });
+    google.charts.load('current', {
+      'packages': ['table', 'corechart']
+    });
     google.charts.setOnLoadCallback(drawTable);
     google.charts.setOnLoadCallback(drawChart);
 
@@ -53,7 +52,7 @@
     var table;
 
     function drawTable() {
-      data = new google.visualization.DataTable(allowHtml=true);
+      data = new google.visualization.DataTable();
       data.addColumn('string', 'Name');
       data.addColumn('string', 'Eats Garlic');
       data.addColumn('string', 'Has Shadow');
@@ -62,7 +61,7 @@
         data.addRow([classmate_data[i]['name'], classmate_data[i]['garlic'], classmate_data[i]['shadow'], classmate_data[i]['complexion']]);
       }
 
-      table = new google.visualization.Table(document.getElementById('table_div'), allowHtml=true);
+      table = new google.visualization.Table(document.getElementById('table_div'));
 
       table.draw(data, {showRowNumber: true, width: '100%', height: '50%'});
     };
@@ -102,14 +101,14 @@
         var name = document.getElementById('first_name').value;
         var shadow = 'no';
         if (document.getElementById('shadow').checked){
-            var shadow = 'yes';
+            shadow = 'yes';
         };
         var garlic = 'no';
         if (document.getElementById('garlic').checked){
-            var garlic = 'yes';
+            garlic = 'yes';
         };
         var complexion = document.getElementById('complexion').value;
-        classmate_data += {'name':name,'shadow':shadow,'garlic':garlic,'complexion':complexion};
+        classmate_data.push({'name':name,'shadow':shadow,'garlic':garlic,'complexion':complexion});
         data.addRow([name, garlic, shadow, complexion])
         table.draw(data, {showRowNumber: true, width: '100%', height: '50%'});
 
@@ -127,7 +126,6 @@
     <!--nav-btn-container holds the button/a elements inside of the navbar that take user to different html pages-->
     <div class="nav-btns-container">
       <a href="HomePage.html" class="nav-btn">Home</a>
-      <a href="#" class="nav-btn">Table</a>
       <a href="AboutPage.html" class="nav-btn">About</a>
     </div>
   </nav>
@@ -167,10 +165,12 @@
         </form>
     </div>   
   </div>
+  <div class="table-and-chart">
     <!--classmate data table-->
     <div class = "table" id="table_div"></div>
     <!--classmate pie chart-->
     <div id="vampire_piechart" style="width: 500px; height: 350px;"></div>
+  </div>
 </main>
 </body>
 </html>
