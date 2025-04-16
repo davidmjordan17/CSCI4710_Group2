@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}
+    FreshTrack
+{% endblock %}
+
+{% block content %}
+<form action="" method="POST" style="
+    background: white;
+    border-radius: 50px;
+    padding: 3rem;
+    font-family: 'DM Sans', sans-serif;
+    width: 500px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    ">
+    <h3 align="center" style="margin-bottom: 3rem;">Sign Up</h3>
+    
+    <div class="form-row" style="display: flex; justify-content: space-between; width: 100%;">
+        <div class="form-group" style="width: 48%;">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter your first name" required>
+        </div>
+
+        <div class="form-group" style="width: 48%;">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter your last name" required>
+        </div>
+    </div>
+    
+    <div class="form-group" style="width: 100%;">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email ..." required>
+    </div>
+    
+    <div class="form-group" style="width: 100%;">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password ..." required>
+    </div>
+    <div class="form-group" style="width: 100%;">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password ..." required>
+    </div>
+
+    <br>
+
+    <button type="submit" class="btn btn-primary btn-success" style="align-self: center;">Create Account</button>
+</form>
+{% endblock %}

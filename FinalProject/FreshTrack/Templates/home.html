@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Freshtrack
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid" style="background: linear-gradient(to right, #b2bdc6, #eef2f3); padding: 2rem; border-radius: 10px;">
+    <div class="row mb-4">
+        <div class="col-12 text-center mb-5">  
+            <h1 style="font-size: 4rem; font-weight: 700;">My Groceries</h1>  
+            <a href="/add_grocery" class="btn btn-success mt-3"> 
+                <i class="fa fa-plus"></i> Add Item
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for item in user.groceries %}
+            {# Determine card color based on expiry #}
+            {% set days_remaining = (item.expiry_date - today).days if item.expiry_date else 999 %}
+            
+            <div class="col-md-4 mb-4">
+                <div class="card 
+                    {% if not item.expiry_date %} 
+                        border-success 
+                    {% elif days_remaining > 3 %} 
+                        border-success 
+                    {% elif days_remaining >= 0 %} 
+                        border-warning 
+                    {% else %} 
+                        border-danger 
+                    {% endif %}">
+                    
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title" style="font-size: 1.7rem;">{{ item.name }}</h5>
+                            <form action="{{ url_for('views.delete_item', id=item.id) }}" method="POST">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <p class="card-text">
+                            <strong>Qty:</strong> {{ item.quantity }}<br>
+                            <strong>Expires:</strong> 
+                            {% if item.expiry_date %}
+                                {{ item.expiry_date.strftime('%b %d, %Y') }}
+                                <small>({{ days_remaining }} days)</small>
+                            {% else %}
+                                Never
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

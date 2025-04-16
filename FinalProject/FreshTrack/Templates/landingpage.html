@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Freshtrack
+{% endblock %}
+
+{% block content %}
+    <div class="jumbotron text-center bs-body-color" id="title-container" 
+    style=
+        "background: linear-gradient(to right, #ffffff, #ffffff);
+        border-radius: 50px;
+        font-family: 'DM Sans', sans-serif;
+        padding: 8rem;
+        ">
+
+        <h1 class="display-3" 
+        style="
+        color: #66f108;
+        font-weight: 600;
+        text-shadow: 2px 2px 2px rgb(0, 0, 0, .2);
+        ">
+        Welcome to Freshtrack!</h1>
+        
+        <p class="lead">Your one-stop solution for tracking your fresh produce</p>
+        <hr class="my-4">
+        <a class="btn btn-primary btn-lg" href="/sign-up" role="button" 
+        style="background-color: rgb(125, 227, 23);
+        border: none;
+        padding: .5rem 2rem;
+        ">
+        Sign Up</a>
+    </div>
+{% endblock %}
