@@ -58,4 +58,47 @@
         {% endfor %}
     </div>
 </div>
+
+<style>
+    @keyframes pulse-warning {
+        0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7); }
+        70% { box-shadow: 0 0 0 10px rgba(255, 193, 7, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+    }
+    @keyframes pulse-danger {
+        0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+        70% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+    }
+    .pulse-warning {
+        animation: pulse-warning 2s infinite;
+    }
+    .pulse-danger {
+        animation: pulse-danger 1.5s infinite;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.card').forEach(card => {
+            const daysElement = card.querySelector('small');
+            if (!daysElement) return;
+            
+            const daysText = daysElement.textContent.match(/(-?\d+)/);
+            if (!daysText) return;
+            
+            const daysRemaining = parseInt(daysText[0]);
+            
+            if (daysRemaining < 0) {
+                // Expired - red pulse
+                card.classList.add('pulse-danger');
+                card.querySelector('.card-title').classList.add('text-danger');
+            } else if (daysRemaining <= 3) {
+                // Expiring soon - yellow pulse
+                card.classList.add('pulse-warning');
+                card.querySelector('.card-title').classList.add('text-warning');
+            }
+        });
+    });
+</script>
 {% endblock %}
