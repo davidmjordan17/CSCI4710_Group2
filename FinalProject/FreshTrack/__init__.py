@@ -8,7 +8,7 @@ db = SQLAlchemy()
 DB_NAME = 'database.db'
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, template_folder='Templates')
     app.config['SECRET_KEY'] = 'pineapple'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
